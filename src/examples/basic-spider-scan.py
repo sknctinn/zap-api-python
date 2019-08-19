@@ -4,14 +4,22 @@
 import time
 from pprint import pprint
 from zapv2 import ZAPv2
+import sys
 
-target = 'http://127.0.0.1'
-apikey = 'changeme' # Change to match the API key set in ZAP, or use None if the API key is disabled
+
+
+target = 'http://localhost:3000/#/'
+apikey = 'nmurqpgctsset842hjoimof33a' # Change to match the API key set in ZAP, or use None if the API key is disabled
 #
 # By default ZAP API client will connect to port 8080
 zap = ZAPv2(apikey=apikey)
 # Use the line below if ZAP is not listening on port 8080, for example, if listening on port 8090
 # zap = ZAPv2(apikey=apikey, proxies={'http': 'http://127.0.0.1:8090', 'https': 'http://127.0.0.1:8090'})
+
+
+if len(sys.argv) == 2:
+        folder_path = sys.argv[1]
+
 
 # Proxy a request to the target so that ZAP has something to deal with
 print('Accessing target {}'.format(target))
@@ -49,4 +57,4 @@ print ('Active Scan completed')
 
 print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print ('Alerts: ')
-pprint (zap.core.alerts())
+print (zap.core.alerts())
