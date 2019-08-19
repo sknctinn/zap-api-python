@@ -55,6 +55,6 @@ print ('Active Scan completed')
 
 # Report the results
 
-print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
+#print ('Hosts: {}'.format(', '.join(zap.core.hosts)))
 print ('Alerts: ')
-print (zap.core.alerts())
+pprint (zap.core.alerts())
